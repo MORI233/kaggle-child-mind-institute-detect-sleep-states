@@ -63,7 +63,7 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         model3.load_state_dict(torch.load(weight_path3))
         print('load weight from "{}"'.format(weight_path3))
         weight_path4 = "/kaggle/input/d/daikaizhai/cmi-model/exp021/single/best_model.pth"
-        model3.load_state_dict(torch.load(weight_path4))
+        model4.load_state_dict(torch.load(weight_path4))
         print('load weight from "{}"'.format(weight_path4))
     return model1, model2, model3,model4
 
