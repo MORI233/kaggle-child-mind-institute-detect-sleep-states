@@ -33,6 +33,13 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         num_timesteps=num_timesteps // cfg.downsample_rate,
         test=True,
     )
+    model3 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
 
     # load weights
     if cfg.weight is not None:
@@ -45,7 +52,10 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         weight_path2 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
         model2.load_state_dict(torch.load(weight_path2))
         print('load weight from "{}"'.format(weight_path2))
-    return model1, model2
+        weight_path3 = "/kaggle/input/d/daikaizhai/cmi-model/exp018/single/best_model.pth"
+        model3.load_state_dict(torch.load(weight_path2))
+        print('load weight from "{}"'.format(weight_path3))
+    return model1, model2, model3
 
 
 def get_test_dataloader(cfg: InferenceConfig) -> DataLoader:
@@ -126,14 +136,16 @@ def main(cfg: InferenceConfig):
     with trace("load test dataloader"):
         test_dataloader = get_test_dataloader(cfg)
     with trace("load model"):
-        model1,model2 = load_model(cfg)
+        model1,model2,model3 = load_model(cfg)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     with trace("inference"):
         keys, preds1 = inference(cfg.duration, test_dataloader, model1, device, use_amp=cfg.use_amp)
     with trace("inference"):
         keys, preds2 = inference(cfg.duration, test_dataloader, model2, device, use_amp=cfg.use_amp)
-    preds = (preds1 + preds2) / 2
+    with trace("inference"):
+        keys, preds3 = inference(cfg.duration, test_dataloader, model3, device, use_amp=cfg.use_amp)
+    preds = (preds1 + preds2 + preds3) / 3
     with trace("make submission"):
         sub_df = make_submission(
             keys,
