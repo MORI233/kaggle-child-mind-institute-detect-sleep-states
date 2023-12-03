@@ -29,12 +29,16 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
 
     # load weights
     if cfg.weight is not None:
-        weight_path = (
-            Path(cfg.dir.model_dir) / cfg.weight.exp_name / cfg.weight.run_name / "best_model.pth"
-        )
-        model.load_state_dict(torch.load(weight_path))
+        # weight_path = (
+        #     Path(cfg.dir.model_dir) / cfg.weight.exp_name / cfg.weight.run_name / "best_model.pth"
+        # )
+        weight_path1 = "/kaggle/input/d/daikaizhai/cmi-model/exp023/single/best_model.pth"
+        model.load_state_dict(torch.load(weight_path1))
         print('load weight from "{}"'.format(weight_path))
-    return model
+        weight_path2 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
+        mode2.load_state_dict(torch.load(weight_path2))
+        print('load weight from "{}"'.format(weight_path2))
+    return model1, model2
 
 
 def get_test_dataloader(cfg: InferenceConfig) -> DataLoader:
@@ -115,12 +119,14 @@ def main(cfg: InferenceConfig):
     with trace("load test dataloader"):
         test_dataloader = get_test_dataloader(cfg)
     with trace("load model"):
-        model = load_model(cfg)
+        model1,model2 = load_model(cfg)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     with trace("inference"):
-        keys, preds = inference(cfg.duration, test_dataloader, model, device, use_amp=cfg.use_amp)
-
+        keys, preds1 = inference(cfg.duration, test_dataloader, model1, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds2 = inference(cfg.duration, test_dataloader, model2, device, use_amp=cfg.use_amp)
+    preds = (preds1 + preds2) / 2
     with trace("make submission"):
         sub_df = make_submission(
             keys,
