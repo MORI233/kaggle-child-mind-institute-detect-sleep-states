@@ -19,7 +19,14 @@ from src.utils.post_process import post_process_for_seg
 
 def load_model(cfg: InferenceConfig) -> BaseModel:
     num_timesteps = nearest_valid_size(int(cfg.duration * cfg.upsample_rate), cfg.downsample_rate)
-    model = get_model(
+    model1 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model2 = get_model(
         cfg,
         feature_dim=len(cfg.features),
         n_classes=len(cfg.labels),
@@ -33,7 +40,7 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         #     Path(cfg.dir.model_dir) / cfg.weight.exp_name / cfg.weight.run_name / "best_model.pth"
         # )
         weight_path1 = "/kaggle/input/d/daikaizhai/cmi-model/exp023/single/best_model.pth"
-        model.load_state_dict(torch.load(weight_path1))
+        model1.load_state_dict(torch.load(weight_path1))
         print('load weight from "{}"'.format(weight_path1))
         weight_path2 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
         modeL2.load_state_dict(torch.load(weight_path2))
