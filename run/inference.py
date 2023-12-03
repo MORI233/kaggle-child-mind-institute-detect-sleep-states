@@ -47,6 +47,13 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
     num_timesteps=num_timesteps // cfg.downsample_rate,
     test=True,
     )
+    model5 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
 
     # load weights
     if cfg.weight is not None:
@@ -65,7 +72,10 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         weight_path4 = "/kaggle/input/d/daikaizhai/cmi-model/exp021/single/best_model.pth"
         model4.load_state_dict(torch.load(weight_path4))
         print('load weight from "{}"'.format(weight_path4))
-    return model1, model2, model3,model4
+        weight_path5 = "/kaggle/input/d/daikaizhai/cmi-model/exp019/single/best_model.pth"
+        model5.load_state_dict(torch.load(weight_path5))
+        print('load weight from "{}"'.format(weight_path5))
+    return model1, model2, model3,model4,model5
 
 
 def get_test_dataloader(cfg: InferenceConfig) -> DataLoader:
@@ -146,7 +156,7 @@ def main(cfg: InferenceConfig):
     with trace("load test dataloader"):
         test_dataloader = get_test_dataloader(cfg)
     with trace("load model"):
-        model1,model2,model3,model4 = load_model(cfg)
+        model1,model2,model3,model4,model5 = load_model(cfg)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     with trace("inference"):
@@ -157,7 +167,9 @@ def main(cfg: InferenceConfig):
         keys, preds3 = inference(cfg.duration, test_dataloader, model3, device, use_amp=cfg.use_amp)
     with trace("inference"):
         keys, preds4 = inference(cfg.duration, test_dataloader, model4, device, use_amp=cfg.use_amp)
-    preds = (preds1 + preds2 + preds3+ preds4) / 4
+    with trace("inference"):
+        keys, preds5 = inference(cfg.duration, test_dataloader, model5, device, use_amp=cfg.use_amp)
+    preds = (preds1 + preds2 + preds3+ preds4+ preds5) / 5
     with trace("make submission"):
         sub_df = make_submission(
             keys,
