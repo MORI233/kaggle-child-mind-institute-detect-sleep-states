@@ -14,7 +14,6 @@ SERIES_SCHEMA = {
     "step": pl.UInt32,
     "anglez": pl.Float32,
     "enmo": pl.Float32,
-    "enmo_1v_30m_mean": pl.Float32,
 }
 
 
@@ -30,7 +29,6 @@ FEATURE_NAMES = [
     "minute_cos",
     "anglez_sin",
     "anglez_cos",
-    "enmo_1v_30m_mean",
 ]
 
 ANGLEZ_MEAN = -8.810476
