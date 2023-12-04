@@ -55,3 +55,4 @@ features:
   - "enmo"
   - "hour_sin"
   - "hour_cos"
+  - enmo_1v_30m_mean
