@@ -61,7 +61,6 @@ def add_feature(series_df: pl.DataFrame) -> pl.DataFrame:
             pl.col("step") / pl.count("step"),
             pl.col('anglez_rad').sin().alias('anglez_sin'),
             pl.col('anglez_rad').cos().alias('anglez_cos'),
-            pl.col('enmo_1v_30m_mean'),
         )
         .select("series_id", *FEATURE_NAMES)
     )
@@ -115,6 +114,7 @@ def main(cfg: PrepareDataConfig):
                     pl.col("enmo"),
                     pl.col("timestamp"),
                     pl.col("anglez_rad"),
+                    pl.col("enmo_1v_30m_mean"),
                 ]
             )
             .collect(streaming=True)
