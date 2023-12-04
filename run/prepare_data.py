@@ -104,6 +104,7 @@ def main(cfg: PrepareDataConfig):
                 deg_to_rad(pl.col("anglez")).alias("anglez_rad"),
                 (pl.col("anglez") - ANGLEZ_MEAN) / ANGLEZ_STD,
                 (pl.col("enmo") - ENMO_MEAN) / ENMO_STD,
+                pl.col("enmo_1v_30m_mean"),
             )
             .select(
                 [
