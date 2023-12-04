@@ -235,7 +235,7 @@ def main(cfg: InferenceConfig):
     #     keys, preds9 = inference(cfg.duration, test_dataloader, model9, device, use_amp=cfg.use_amp)
     # with trace("inference"):
     #     keys, preds10 = inference(cfg.duration, test_dataloader, model10, device, use_amp=cfg.use_amp)
-    preds = (preds1 + preds2 + preds3+ preds4+ preds5 + preds6 + preds7) / 7
+    preds = (preds1 + preds2 + preds3+ preds4+ preds5)/5 *0.5 + (preds6 + preds7) / 2 *0.5
     with trace("make submission"):
         sub_df = make_submission(
             keys,
