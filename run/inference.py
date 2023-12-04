@@ -55,6 +55,42 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
     test=True,
     )
 
+    model6 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model7 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model8 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model9 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model10 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+
     # load weights
     if cfg.weight is not None:
         # weight_path = (
@@ -79,16 +115,16 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         weight_path6 = "/kaggle/input/d/daikaizhai/cmi-model/exp102/single/best_model.pth"
         model6.load_state_dict(torch.load(weight_path6))
         print('load weight from "{}"'.format(weight_path6))
-        weight_path7 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
+        weight_path7 = "/kaggle/input/d/daikaizhai/cmi-model/exp103/single/best_model.pth"
         model7.load_state_dict(torch.load(weight_path7))
         print('load weight from "{}"'.format(weight_path7))
-        weight_path8 = "/kaggle/input/d/daikaizhai/cmi-model/exp018/single/best_model.pth"
+        weight_path8 = "/kaggle/input/d/daikaizhai/cmi-model/exp104/single/best_model.pth"
         model8.load_state_dict(torch.load(weight_path8))
         print('load weight from "{}"'.format(weight_path8))
-        weight_path9 = "/kaggle/input/d/daikaizhai/cmi-model/exp021/single/best_model.pth"
+        weight_path9 = "/kaggle/input/d/daikaizhai/cmi-model/exp105/single/best_model.pth"
         model9.load_state_dict(torch.load(weight_path9))
         print('load weight from "{}"'.format(weight_path9))
-        weight_path10 = "/kaggle/input/d/daikaizhai/cmi-model/exp019/single/best_model.pth"
+        weight_path10 = "/kaggle/input/d/daikaizhai/cmi-model/exp106/single/best_model.pth"
         model10.load_state_dict(torch.load(weight_path10))
         print('load weight from "{}"'.format(weight_path10))
 
