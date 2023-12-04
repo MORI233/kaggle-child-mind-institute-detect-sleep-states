@@ -69,68 +69,92 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         num_timesteps=num_timesteps // cfg.downsample_rate,
         test=True,
     )
-    # model8 = get_model(
-    # cfg,
-    # feature_dim=len(cfg.features),
-    # n_classes=len(cfg.labels),
-    # num_timesteps=num_timesteps // cfg.downsample_rate,
-    # test=True,
-    # )
-    # model9 = get_model(
-    # cfg,
-    # feature_dim=len(cfg.features),
-    # n_classes=len(cfg.labels),
-    # num_timesteps=num_timesteps // cfg.downsample_rate,
-    # test=True,
-    # )
-    # model10 = get_model(
-    # cfg,
-    # feature_dim=len(cfg.features),
-    # n_classes=len(cfg.labels),
-    # num_timesteps=num_timesteps // cfg.downsample_rate,
-    # test=True,
-    # )
+    model8 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model9 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model10 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    
+    model11 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+
+    model12 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
 
     # load weights
     if cfg.weight is not None:
         weight_path = (
             Path(cfg.dir.model_dir) / cfg.weight.exp_name / cfg.weight.run_name / "best_model.pth"
         )
-        weight_path1 = "/kaggle/input/d/daikaizhai/cmi-model/exp023/single/best_model.pth"
+        weight_path1 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
         model1.load_state_dict(torch.load(weight_path1))
         print('load weight from "{}"'.format(weight_path1))
-        weight_path2 = "/kaggle/input/d/daikaizhai/cmi-model/exp011/single/best_model.pth"
+        weight_path2 = "/kaggle/input/d/daikaizhai/cmi-model/exp014/single/best_model.pth"
         model2.load_state_dict(torch.load(weight_path2))
         print('load weight from "{}"'.format(weight_path2))
-        weight_path3 = "/kaggle/input/d/daikaizhai/cmi-model/exp018/single/best_model.pth"
+        weight_path3 = "/kaggle/input/d/daikaizhai/cmi-model/exp015/single/best_model.pth"
         model3.load_state_dict(torch.load(weight_path3))
         print('load weight from "{}"'.format(weight_path3))
-        weight_path4 = "/kaggle/input/d/daikaizhai/cmi-model/exp021/single/best_model.pth"
+        weight_path4 = "/kaggle/input/d/daikaizhai/cmi-model/exp018/single/best_model.pth"
         model4.load_state_dict(torch.load(weight_path4))
         print('load weight from "{}"'.format(weight_path4))
         weight_path5 = "/kaggle/input/d/daikaizhai/cmi-model/exp019/single/best_model.pth"
         model5.load_state_dict(torch.load(weight_path5))
         print('load weight from "{}"'.format(weight_path5))
-
-        weight_path6 = "/kaggle/input/d/daikaizhai/cmi-model/exp105/single/best_model.pth"
+        
+        weight_path6 = "/kaggle/input/d/daikaizhai/cmi-model/exp020/single/best_model.pth"
         model6.load_state_dict(torch.load(weight_path6))
         print('load weight from "{}"'.format(weight_path6))
-        weight_path7 = "/kaggle/input/d/daikaizhai/cmi-model/exp106/single/best_model.pth"
+        weight_path7 = "/kaggle/input/d/daikaizhai/cmi-model/exp021/single/best_model.pth"
         model7.load_state_dict(torch.load(weight_path7))
         print('load weight from "{}"'.format(weight_path7))
-        # weight_path8 = "/kaggle/input/d/daikaizhai/cmi-model/exp104/single/best_model.pth"
-        # model8.load_state_dict(torch.load(weight_path8))
-        # print('load weight from "{}"'.format(weight_path8))
-        # weight_path9 = "/kaggle/input/d/daikaizhai/cmi-model/exp105/single/best_model.pth"
-        # model9.load_state_dict(torch.load(weight_path9))
-        # print('load weight from "{}"'.format(weight_path9))
-        # weight_path10 = "/kaggle/input/d/daikaizhai/cmi-model/exp106/single/best_model.pth"
-        # model10.load_state_dict(torch.load(weight_path10))
-        # print('load weight from "{}"'.format(weight_path10))
+        weight_path8 = "/kaggle/input/d/daikaizhai/cmi-model/exp023/single/best_model.pth"
+        model8.load_state_dict(torch.load(weight_path8))
+        print('load weight from "{}"'.format(weight_path8))
+        weight_path9 = "/kaggle/input/d/daikaizhai/cmi-model/exp025/single/best_model.pth"
+        model9.load_state_dict(torch.load(weight_path9))
+        print('load weight from "{}"'.format(weight_path9))
+        weight_path10 = "/kaggle/input/d/daikaizhai/cmi-model/exp027/single/best_model.pth"
+        model10.load_state_dict(torch.load(weight_path10))
+        print('load weight from "{}"'.format(weight_path10))
+
+        
+        weight_path11 = "/kaggle/input/d/daikaizhai/cmi-model/exp105/single/best_model.pth"
+        model11.load_state_dict(torch.load(weight_path11))
+        print('load weight from "{}"'.format(weight_path11))
+        weight_path12 = "/kaggle/input/d/daikaizhai/cmi-model/exp106/single/best_model.pth"
+        model12.load_state_dict(torch.load(weight_path12))
+        print('load weight from "{}"'.format(weight_path12))
 
 
     
-    return model1, model2, model3,model4,model5, model6, model7
+    return model1, model2, model3,model4,model5, model6, model7,model8, model9,model10,model11, model12
 
 
 def get_test_dataloader(cfg: InferenceConfig) -> DataLoader:
@@ -211,7 +235,7 @@ def main(cfg: InferenceConfig):
     with trace("load test dataloader"):
         test_dataloader = get_test_dataloader(cfg)
     with trace("load model"):
-        model1, model2, model3,model4,model5, model6, model7 = load_model(cfg)
+        model1, model2, model3,model4,model5, model6, model7,model8, model9,model10,model11, model12 = load_model(cfg)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     with trace("inference"):
@@ -229,13 +253,18 @@ def main(cfg: InferenceConfig):
         keys, preds6 = inference(cfg.duration, test_dataloader, model6, device, use_amp=cfg.use_amp)
     with trace("inference"):
         keys, preds7 = inference(cfg.duration, test_dataloader, model7, device, use_amp=cfg.use_amp)
-    # with trace("inference"):
-    #     keys, preds8 = inference(cfg.duration, test_dataloader, model8, device, use_amp=cfg.use_amp)
-    # with trace("inference"):
-    #     keys, preds9 = inference(cfg.duration, test_dataloader, model9, device, use_amp=cfg.use_amp)
-    # with trace("inference"):
-    #     keys, preds10 = inference(cfg.duration, test_dataloader, model10, device, use_amp=cfg.use_amp)
-    preds = (preds1 + preds2 + preds3+ preds4+ preds5)/5 *0.5 + (preds6 + preds7) / 2 *0.5
+    with trace("inference"):
+        keys, preds8 = inference(cfg.duration, test_dataloader, model8, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds9 = inference(cfg.duration, test_dataloader, model9, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds10 = inference(cfg.duration, test_dataloader, model10, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds11 = inference(cfg.duration, test_dataloader, model11, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds12 = inference(cfg.duration, test_dataloader, model12, device, use_amp=cfg.use_amp)
+    
+    preds = (preds1 + preds2 + preds3+ preds4+ preds5+preds6 + preds7 + preds8+ preds9+ preds10+ preds11+ preds12) / 12
     with trace("make submission"):
         sub_df = make_submission(
             keys,
