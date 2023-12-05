@@ -107,6 +107,81 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
     test=True,
     )
 
+
+
+    model_1 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model_2 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model_3 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model_4 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model_5 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+
+    model_6 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model_7 = get_model(
+        cfg,
+        feature_dim=len(cfg.features),
+        n_classes=len(cfg.labels),
+        num_timesteps=num_timesteps // cfg.downsample_rate,
+        test=True,
+    )
+    model_8 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model_9 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )
+    model_10 = get_model(
+    cfg,
+    feature_dim=len(cfg.features),
+    n_classes=len(cfg.labels),
+    num_timesteps=num_timesteps // cfg.downsample_rate,
+    test=True,
+    )    
+
+
     # load weights
     if cfg.weight is not None:
         weight_path = (
@@ -127,7 +202,6 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         weight_path5 = "/kaggle/input/d/daikaizhai/cmi-model/exp019/single/best_model.pth"
         model5.load_state_dict(torch.load(weight_path5))
         print('load weight from "{}"'.format(weight_path5))
-        
         weight_path6 = "/kaggle/input/d/daikaizhai/cmi-model/exp020/single/best_model.pth"
         model6.load_state_dict(torch.load(weight_path6))
         print('load weight from "{}"'.format(weight_path6))
@@ -143,8 +217,6 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         weight_path10 = "/kaggle/input/d/daikaizhai/cmi-model/exp027/single/best_model.pth"
         model10.load_state_dict(torch.load(weight_path10))
         print('load weight from "{}"'.format(weight_path10))
-
-        
         weight_path11 = "/kaggle/input/d/daikaizhai/cmi-model/exp105/single/best_model.pth"
         model11.load_state_dict(torch.load(weight_path11))
         print('load weight from "{}"'.format(weight_path11))
@@ -152,9 +224,41 @@ def load_model(cfg: InferenceConfig) -> BaseModel:
         model12.load_state_dict(torch.load(weight_path12))
         print('load weight from "{}"'.format(weight_path12))
 
+        weight_path_1 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold0.pth"
+        model_1.load_state_dict(torch.load(weight_path_1))
+        print('load weight from "{}"'.format(weight_path1))
+        weight_path_2 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold1.pth"
+        model_2.load_state_dict(torch.load(weight_path_2))
+        print('load weight from "{}"'.format(weight_path_2))
+        weight_path_3 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold2.pth"
+        model_3.load_state_dict(torch.load(weight_path_3))
+        print('load weight from "{}"'.format(weight_path_3))
+        weight_path_4 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold3.pth"
+        model_4.load_state_dict(torch.load(weight_path_4))
+        print('load weight from "{}"'.format(weight_path_4))
+        weight_path_5 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold4.pth"
+        model_5.load_state_dict(torch.load(weight_path_5))
+        print('load weight from "{}"'.format(weight_path_5))
+        weight_path_6 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold5.pth"
+        model_6.load_state_dict(torch.load(weight_path_6))
+        print('load weight from "{}"'.format(weight_path_6))
+        weight_path_7 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold6.pth"
+        model_7.load_state_dict(torch.load(weight_path_7))
+        print('load weight from "{}"'.format(weight_path_7))
+        weight_path_8 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold7.pth"
+        model_8.load_state_dict(torch.load(weight_path_8))
+        print('load weight from "{}"'.format(weight_path_8))
+        weight_path_9 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold8.pth"
+        model_9.load_state_dict(torch.load(weight_path_9))
+        print('load weight from "{}"'.format(weight_path_9))
+        weight_path_10 = "/kaggle/input/model-sub-exp8-ensemble-1/best_model_fold9.pth"
+        model_10.load_state_dict(torch.load(weight_path_10))
+        print('load weight from "{}"'.format(weight_path_10))
+
+
 
     
-    return model1, model2,model4,model5, model6, model7,model8, model9,model10,model11, model12
+    return model1, model2,model4,model5, model6, model7,model8, model9,model10,model11, model12, model_1, model_2, model_3, model_4,model_5, model_6, model_7,model_8, model_9, model_10
 
 
 def get_test_dataloader(cfg: InferenceConfig) -> DataLoader:
@@ -235,7 +339,7 @@ def main(cfg: InferenceConfig):
     with trace("load test dataloader"):
         test_dataloader = get_test_dataloader(cfg)
     with trace("load model"):
-        model1, model2,model4,model5, model6, model7,model8, model9,model10,model11, model12 = load_model(cfg)
+        model1, model2,model4,model5, model6, model7,model8, model9,model10,model11, model12, model_1, model_2, model_3, model_4,model_5, model_6, model_7,model_8, model_9, model_10 = load_model(cfg)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     with trace("inference"):
@@ -248,7 +352,6 @@ def main(cfg: InferenceConfig):
         keys, preds4 = inference(cfg.duration, test_dataloader, model4, device, use_amp=cfg.use_amp)
     with trace("inference"):
         keys, preds5 = inference(cfg.duration, test_dataloader, model5, device, use_amp=cfg.use_amp)
-
     with trace("inference"):
         keys, preds6 = inference(cfg.duration, test_dataloader, model6, device, use_amp=cfg.use_amp)
     with trace("inference"):
@@ -263,8 +366,30 @@ def main(cfg: InferenceConfig):
         keys, preds11 = inference(cfg.duration, test_dataloader, model11, device, use_amp=cfg.use_amp)
     with trace("inference"):
         keys, preds12 = inference(cfg.duration, test_dataloader, model12, device, use_amp=cfg.use_amp)
+
+
+    with trace("inference"):
+        keys, preds_1 = inference(cfg.duration, test_dataloader, model_1, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_2 = inference(cfg.duration, test_dataloader, model_2, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_3 = inference(cfg.duration, test_dataloader, model_3, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_4 = inference(cfg.duration, test_dataloader, model_4, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_5 = inference(cfg.duration, test_dataloader, model_5, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_6 = inference(cfg.duration, test_dataloader, model_6, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_7 = inference(cfg.duration, test_dataloader, model_7, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_8 = inference(cfg.duration, test_dataloader, model_8, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_9 = inference(cfg.duration, test_dataloader, model_9, device, use_amp=cfg.use_amp)
+    with trace("inference"):
+        keys, preds_10 = inference(cfg.duration, test_dataloader, model_10, device, use_amp=cfg.use_amp)
     
-    preds = (preds1 + preds2 + preds4+ preds5+preds6 + preds7 + preds8+ preds9+ preds10) / 9 * 0.7 + (preds11+ preds12) / 2 * 0.3
+    preds = ((preds1 + preds2 + preds4+ preds5+preds6 + preds7 + preds8+ preds9+ preds10+ preds11+ preds12) / 11) * 0.5 + ((preds_1 + preds_2 + preds_3 + preds_4+ preds_5+preds_6 + preds_7 + preds_8+ preds_9 + preds_10) / 10 )*0.5
     with trace("make submission"):
         sub_df = make_submission(
             keys,
